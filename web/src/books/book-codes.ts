@@ -61,6 +61,32 @@ const rusMainBooksJson = JSON.stringify(rusMainBooks);
 const rusLettersBooksJson = JSON.stringify(rusLettersBooks);
 const rusLecturesBooksJson = JSON.stringify(rusLecturesBooks);
 const rusAllBooksJson = JSON.stringify(RUS_BOOK_CODES);
+const engSongOneBooks = [
+  "BG",
+  "BS",
+  "ISO",
+  "KB",
+  "LBG",
+  "LD",
+  "LISO",
+  "MM",
+  "NBS",
+  "NoD",
+  "NoI",
+  "TLC",
+  "TQK",
+] as const;
+const rusSongOneBooks = ["БГ", "БС", "ИВН", "ИП", "ЛекБГ", "МЦК"] as const;
+const engVariableSongBooks = ["SB", "CC", "DOC", "LCC", "LSB", "LTRS", "TLKS"] as const;
+const rusVariableSongBooks = ["ШБ", "ЧЧ", "ДОК", "ЛекШБ", "ПШП", "БВ", "НН", "НП", "УГЧ"] as const;
+
+export const VERSE_ID_FORMAT_DESCRIPTION = [
+  "Verse ID format is BOOK-SONG-CHAPTER-VERSE (4 parts, SONG is required).",
+  'Examples: "SB-1-1-1", "BG-1-2-47", "ШБ-1-1-1", "БГ-1-2-47".',
+  `Single-song books still include SONG=1 (eng: ${JSON.stringify(engSongOneBooks)}; rus: ${JSON.stringify(rusSongOneBooks)}).`,
+  `Variable-song books require an explicit SONG value (eng: ${JSON.stringify(engVariableSongBooks)}; rus: ${JSON.stringify(rusVariableSongBooks)}).`,
+  'VERSE token may be non-numeric (examples: "16-18", "0.1", "16CA2").',
+].join(" ");
 
 export const BOOKS_FILTER_DESCRIPTION = [
   "Book filter.",
@@ -87,7 +113,7 @@ export const BOOKS_TOOL_DESCRIPTION =
   "- q supports OR-style variants with || (example: \"family life || grihastha\")\n" +
   "- books: array of book codes (OR)\n" +
   "- song, chapter: hierarchy filters\n" +
-  "- verses: exact verse ids like SB-1-1-1\n" +
+  `- verses: exact verse ids. ${VERSE_ID_FORMAT_DESCRIPTION}\n` +
   "- text: text payload mode, one of full | snippet | none (default: snippet)\n" +
   "Scope strategy (by books[] only, no scope param):\n" +
   `- main (eng): ${engMainBooksJson}; main (rus): ${rusMainBooksJson}\n` +
@@ -114,4 +140,4 @@ export const BOOKS_TOOL_DESCRIPTION =
   `- All books (rus): {"lang":"rus","q":"Кришна","books":${rusAllBooksJson},"limit":5}\n` +
   "- Custom subset (eng): {\"lang\":\"eng\",\"q\":\"family life\",\"books\":[\"BG\",\"SB\"],\"limit\":5}\n" +
   "- {\"lang\":\"eng\",\"q\":\"Krishna\",\"books\":[\"SB\"],\"song\":\"1\",\"chapter\":\"2\"}\n" +
-  "- {\"lang\":\"eng\",\"verses\":[\"SB-1-1-1\",\"BG-2-47\"]}";
+  "- {\"lang\":\"eng\",\"verses\":[\"SB-1-1-1\",\"BG-1-2-47\"]}";

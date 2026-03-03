@@ -1,4 +1,8 @@
-import { ENG_BOOK_CODES, RUS_BOOK_CODES } from "@/books/book-codes";
+import {
+  ENG_BOOK_CODES,
+  RUS_BOOK_CODES,
+  VERSE_ID_FORMAT_DESCRIPTION,
+} from "@/books/book-codes";
 
 const buildSearchDescription = () => {
   const eng = ENG_BOOK_CODES.join(", ");
@@ -8,6 +12,7 @@ const buildSearchDescription = () => {
     "At least one selector is required: q, books, song, chapter, or verses.",
     `For lang=eng use book codes: ${eng}.`,
     `For lang=rus use book codes: ${rus}.`,
+    VERSE_ID_FORMAT_DESCRIPTION,
   ].join(" ");
 };
 
@@ -138,8 +143,7 @@ export const createOpenApiDocument = (origin: string) => {
               name: "verses",
               in: "query",
               required: false,
-              description:
-                "Comma-separated exact verse IDs, e.g. SB-1-1-1,BG-2-47.",
+              description: `Comma-separated exact verse IDs. ${VERSE_ID_FORMAT_DESCRIPTION}`,
               schema: { type: "string" },
             },
           ],

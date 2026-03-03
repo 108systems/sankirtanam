@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { BOOKS_FILTER_DESCRIPTION } from "./book-codes";
+import { BOOKS_FILTER_DESCRIPTION, VERSE_ID_FORMAT_DESCRIPTION } from "./book-codes";
 
 const languageSchema = z
   .enum(["en", "ru", "eng", "rus"])
@@ -159,7 +159,7 @@ export const booksToolInputSchema = z
       "Chapter/month level filter. Omit if unknown."
     ),
     verses: toolNullableCleanStringArraySchema(150).describe(
-      "Exact verse ids for direct read mode, e.g. [\"SB-1-1-1\", \"BG-2-47\"]."
+      `Exact verse ids for direct read mode. ${VERSE_ID_FORMAT_DESCRIPTION}`
     ),
   })
   .strict()

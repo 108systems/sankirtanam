@@ -38,7 +38,7 @@ const toDiscoveryPayload = (origin: string) => ({
       search:
         "curl -sS 'https://sankirtan.am/api/v1/books/search?lang=eng&q=Krishna&books=ISO&limit=3&text=snippet'",
       read:
-        "curl -sS 'https://sankirtan.am/api/v1/books/search?lang=eng&verses=BG-2-47&text=full'",
+        "curl -sS 'https://sankirtan.am/api/v1/books/search?lang=eng&verses=BG-1-2-47&text=full'",
     },
   },
 });

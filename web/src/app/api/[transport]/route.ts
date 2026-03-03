@@ -11,15 +11,15 @@ const log = logger.child({ module: "books-next/mcp-route" });
 
 // Keep MCP-exposed schema simple for maximum client compatibility.
 const booksToolWireInputSchema = {
-  lang: z.enum(["en", "ru", "eng", "rus"]).optional().nullable(),
-  q: z.string().optional().nullable(),
-  limit: z.number().int().min(1).max(50).optional().nullable(),
-  offset: z.number().int().min(0).max(5000).optional().nullable(),
-  text: z.enum(["full", "snippet", "none"]).optional().nullable(),
-  books: z.array(z.string()).optional().nullable(),
-  song: z.string().optional().nullable(),
-  chapter: z.string().optional().nullable(),
-  verses: z.array(z.string()).optional().nullable(),
+  lang: z.enum(["en", "ru", "eng", "rus"]).optional(),
+  q: z.string().optional(),
+  limit: z.number().int().min(1).max(50).optional(),
+  offset: z.number().int().min(0).max(5000).optional(),
+  text: z.enum(["full", "snippet", "none"]).optional(),
+  books: z.array(z.string()).optional(),
+  song: z.string().optional(),
+  chapter: z.string().optional(),
+  verses: z.array(z.string()).optional(),
 };
 
 const mcpHandler = createMcpHandler(

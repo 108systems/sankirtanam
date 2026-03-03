@@ -1,0 +1,4 @@
+sankirtan.am {
+    reverse_proxy localhost:3108
+    encode gzip zstd
+}

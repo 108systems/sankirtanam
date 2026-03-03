@@ -15,8 +15,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Books Service",
-  description: "Standalone books service UI + REST + MCP",
+  title: "Sankirtanam — Search Srila Prabhupada's Books",
+  description:
+    "Full-text search across Srila Prabhupada's books with REST API and MCP tools for AI agents.",
+  icons: {
+    icon: [
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    title: "Sankirtanam — Search Srila Prabhupada's Books",
+    description:
+      "Full-text search across Srila Prabhupada's books with REST API and MCP tools for AI agents.",
+    url: "https://sankirtan.am",
+    siteName: "Sankirtanam",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

@@ -2,6 +2,8 @@
 
 Next.js books service with:
 - REST API (`/api/v1/books/search`, `/api/v1/books`)
+- REST discovery (`/api/v1`)
+- OpenAPI schema (`/api/v1/openapi.json`, alias `/openapi.json`)
 - MCP endpoint (`/api/mcp`)
 - shadcn UI on `/` and `/books`
 - built-in themes via `next-themes`: `light`, `dark`, `mayapur`, `sanyasa`, `bhakti`

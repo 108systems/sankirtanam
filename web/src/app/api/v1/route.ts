@@ -43,8 +43,11 @@ const toDiscoveryPayload = (origin: string) => ({
   },
 });
 
+const getOrigin = (request: Request) =>
+  process.env.SITE_URL || new URL(request.url).origin;
+
 export async function GET(request: Request) {
-  const origin = new URL(request.url).origin;
+  const origin = getOrigin(request);
   const payload = toDiscoveryPayload(origin);
   const headers = new Headers({
     "content-type": "application/json; charset=utf-8",
@@ -54,7 +57,7 @@ export async function GET(request: Request) {
 }
 
 export async function OPTIONS(request: Request) {
-  const origin = new URL(request.url).origin;
+  const origin = getOrigin(request);
   const headers = new Headers({
     allow: "GET,OPTIONS",
     link: buildLinkHeader(origin),

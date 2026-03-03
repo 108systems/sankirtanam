@@ -14,6 +14,7 @@ COPY . .
 RUN pnpm build
 
 FROM node:22-alpine AS runner
+RUN apk add --no-cache sqlite
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3108

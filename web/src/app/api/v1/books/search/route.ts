@@ -23,7 +23,13 @@ export async function GET(request: Request) {
 
   try {
     const data = await queryBooks(parsedQuery.data);
-    return Response.json({ ok: true, data });
+    // return Response.json({ ok: true, data }); // FIXME: somehow this is NOT working in build returning "⨯ Error: No response is returned from route handler '[project]/src/app/api/v1/books/search/route.ts'. Ensure you return a `Response` or a `NextResponse` in all branches of your handler."
+    return new Response(JSON.stringify({ ok: true, data }), { // NOTE - and this WORKS
+      status: 200,
+      headers: {
+        "content-type": "application/json; charset=utf-8",
+      },
+    });
   } catch (error) {
     log.error({ error, message: error instanceof Error ? error.message : String(error), stack: error instanceof Error ? error.stack : undefined }, "books-next search failed");
     return Response.json(
